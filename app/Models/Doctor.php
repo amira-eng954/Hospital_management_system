@@ -23,7 +23,9 @@ class Doctor extends Authenticatable
         'password',
         'price',
         'phone',
-        'oppointment'
+        'oppointment',
+        'section_id',
+        'status',
        
     ];
 
@@ -48,5 +50,14 @@ class Doctor extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class,'imageable');
+    }
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
     }
 }

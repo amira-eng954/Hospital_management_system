@@ -5,14 +5,19 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use App\Traits\UploadTrait;
 use Illuminate\View\View;
 
 class DoctorController extends Controller
 {
     //
+    use  UploadTrait;
 
 
     //  public function store(LoginDoctorRequest $request): RedirectResponse
@@ -23,74 +28,152 @@ class DoctorController extends Controller
 
     //     return redirect()->intended(route('dashboard.doctor', absolute: false));
     // }
-      public function store(Request $request)
-      {
-        $data=$request->validate([
-            'email'=>"required|email|exists:doctors,email",
-            "password"=>"required"
-        ]);
+    //   public function store(Request $request)
+    //   {
+    //     $data=$request->validate([
+    //         'email'=>"required|email|exists:doctors,email",
+    //         "password"=>"required"
+    //     ]);
 
-        $doctor=Doctor::where("email",'=',$data['email'])->first();
-        if($doctor)
-        {
-            if(!Hash::check($data['password'],$doctor->password))
-            {
-                 return redirect('/login')->withErrors('error',"password worng");
-            }
-            else
-            {
-                 Auth::guard('doctor')->login($doctor);
+    //     $doctor=Doctor::where("email",'=',$data['email'])->first();
+    //     if($doctor)
+    //     {
+    //         if(!Hash::check($data['password'],$doctor->password))
+    //         {
+    //              return redirect('/login')->withErrors('error',"password worng");
+    //         }
+    //         else
+    //         {
+    //              Auth::guard('doctor')->login($doctor);
                  
-               return redirect()->intended(route('dashboard.doctor'));      
-            }
+    //            return redirect()->intended(route('dashboard.doctor'));      
+    //         }
 
-        }
-        else{
-            return redirect('/login')->withErrors('error',"doctor worng");
-
-
-        }
-      }
+    //     }
+    //     else{
+    //         return redirect('/login')->withErrors('error',"doctor worng");
 
 
+    //     }
+    //   }
 
-    public function register(Request $request)
+
+
+    // public function register(Request $request)
+    // {
+    //       $request->validate([
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Doctor::class],
+    //         'password' => ['required'],
+    //       'price'=>['required', 'string'],
+    //       'phone'=>['required', 'string'],
+    //       "oppointment"=>['required', 'string']
+    //     ]);
+
+    //     $user = Doctor::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //         'price'=>$request->price,
+    //       'phone'=>$request->phone,
+    //       "oppointment"=>$request->oppointment
+    //     ]);
+
+    //    // event(new Registered($user));
+
+    //     Auth::login($user);
+
+    //     return redirect(route('dashboard.doctor', absolute: false));
+    // }
+
+    //  public function destroy(Request $request): RedirectResponse
+    // {
+    //     Auth::guard('doctor')->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     return redirect('/login');
+    // }
+
+
+    public function index()
     {
-          $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Doctor::class],
-            'password' => ['required'],
-          'price'=>['required', 'string'],
-          'phone'=>['required', 'string'],
-          "oppointment"=>['required', 'string']
-        ]);
+      $doctors=Doctor::all();
+      return view('dashboard.doctors.index',compact('doctors'));
 
-        $user = Doctor::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'price'=>$request->price,
-          'phone'=>$request->phone,
-          "oppointment"=>$request->oppointment
-        ]);
-
-       // event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(route('dashboard.doctor', absolute: false));
     }
 
-     public function destroy(Request $request): RedirectResponse
+    public function show()
     {
-        Auth::guard('doctor')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/login');
+      
     }
+
+    public function create()
+    {
+      $sections=Section::all();
+      return view("dashboard.doctors.create",compact('sections'));
+      
+    }
+
+    public function store(Request $request)
+    {
+
+       $doctor=$request->validate([
+        'name'=>"required|string|max:255",
+        'email'=>"required|email|unique:doctors,email",
+        'password'=>"required|min:3",
+        'price'=>"required",
+         'phone'=>"required",
+        'oppointment'=>"required|array",
+        'oppointment.*'=>"required|string",
+        'section_id'=>"required|exists:sections,id",
+
+        
+       ]);
+
+       $doctor['password']=Hash::make($doctor['password']);
+       $doctor['oppointment']=implode(',',$doctor['oppointment']);// اخليها كلمه واحده بس بيهم ,
+        DB::beginTransaction();
+      try {
+    
+   
+    // عمليات قاعدة البيانات:
+    
+        $d=Doctor::create($doctor);
+        $this->verifyAndStoreImage($request,'photo','Doctors',$d->id,"App\Models\Doctor");
+       
+    DB::commit(); // تم بنجاح، احفظ كل شيء
+     session()->flash('add',"doctor add suc");
+       return redirect()->route('doctors.index');
+} 
+
+catch (\Exception $e) {
+    DB::rollBack(); // حصل خطأ، رجع كل شيء كما كان
+     // أو تقدر تعرض رسالة خطأ
+    return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+}
+      
+      
+      
+    }
+
+    public function edit()
+    {
+      
+    }
+
+    public function update()
+    {
+      
+    }
+    public function destroy()
+    {
+      
+    }
+
+
 
 }
 

@@ -42,11 +42,7 @@
                                                 </div>
                                             @endif
 
-                                              <div class="alert alert-danger">
-                                                @if(sestion()->has('error'))
-                                                <h4>{{session()->get('error')}}</h4>
-                                                @endif
-                                             </div>
+                                             
  
 
 

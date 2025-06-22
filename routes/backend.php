@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\SectionController;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +18,11 @@ Route::get('/dashboard/user', function () {
 
 
 /////////////////////////////////////////doctors/////////////////////////
-Route::get('/dashboard/doctor', function () {
-    return view('dashboard.doctors.dashboard');
-})->middleware('auth')->name('dashboard.doctor');
+// Route::get('/dashboard/doctor', function () {
+//     return view('dashboard.doctors.dashboard');
+// })->middleware('auth')->name('dashboard.doctor');
+
+
 
 ///////////////////////////////////////////////////end  doctors//////////////////
 
@@ -39,7 +42,15 @@ Route::get('/dashboard/admin', function () {
 
 
  Route::middleware(['auth:admin'])->group(function(){
+    /////////section///
     Route::resource("section",SectionController::class);
+
+    ////end section//////
+
+    ///doctor////////////
+    route::resource('doctors',DoctorController::class);
+    ////////end doctor/////////
+
  });
 ////////////////////////////////////////
 require __DIR__.'/auth.php';

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('phone');
             $table->decimal('price');
             $table->string('oppointment');
+            $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('status',[1,0])->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,20 +2,25 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model
+class Image extends Model
 {
     //
      use HasFactory;
 
     protected $fillable = [
-        'name',
-        
+        'image_name',
+        'imageable_id',
+        'imageable_type'
        
     ];
-    public function doctors()
+    public function imageable()
     {
-        return $this->hasMany(Doctor::class);
+        return $this->morphTo();
     }
+
+     
+
 }

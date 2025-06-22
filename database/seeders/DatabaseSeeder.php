@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
               userseeder::class,
-              adminseeder::class
+              adminseeder::class,
+              SectionSeeder::class,
+              DoctorSeeder::class,
+              ImageSeeder::class
         ]);
     }
 }
