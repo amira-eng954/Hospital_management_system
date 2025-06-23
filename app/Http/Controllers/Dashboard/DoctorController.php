@@ -159,8 +159,11 @@ catch (\Exception $e) {
       
     }
 
-    public function edit()
+    public function edit(Request $request,$id)
     {
+      $doctor=Doctor::find($id);
+       $sections=Section::all();
+      return view("dashboard.doctors.edit",compact('sections','doctor'));
       
     }
 
@@ -168,8 +171,37 @@ catch (\Exception $e) {
     {
       
     }
-    public function destroy()
+    public function destroy(Request $request)
     {
+
+      if($request->page_id==1)
+      { if($request->image)
+        {
+          $this->deleteImage("Doctors/".$request->image,$request->id,$request->image);
+        }
+        $doctor=Doctor::find($request->id)->delete();
+         session()->flash('delete',"doctor delete suc");
+        return redirect()->route('doctors.index');
+
+
+      }
+      else{
+
+          // delete selector doctor
+          $delete_select_id = explode(",", $request->delete_select_id);
+          foreach ($delete_select_id as $ids_doctors){
+              $doctor = Doctor::findorfail($ids_doctors);
+              if($doctor->image){
+                  $this->deleteImage('Doctors/'.$doctor->image->image_name,$ids_doctors,$doctor->image->image_name);
+              }
+          }
+
+          Doctor::destroy($delete_select_id);
+          session()->flash('delete');
+          return redirect()->route('doctors.index');
+
+
+      }
       
     }
 

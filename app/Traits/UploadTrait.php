@@ -3,6 +3,7 @@ namespace App\Traits;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 trait UploadTrait{
 
@@ -33,6 +34,14 @@ trait UploadTrait{
         }
 
         return null;
+
+    }
+
+    public function deleteImage($path,$id,$name)
+    { 
+        Storage::disk("public")->delete($path);
+        Image::where('imageable_id',$id)->where("image_name",$name)->delete();
+       
 
     }
 

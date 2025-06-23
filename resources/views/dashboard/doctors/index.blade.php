@@ -35,9 +35,10 @@
         <div class="col-xl-12">
             <div class="card mg-b-20">
                 <div class="card-header pb-0">
-                    <div class="d-flex justify-content-between">
+                   <div class="card-header pb-0">
                         <a href="{{route('doctors.create')}}" class="btn btn-primary" role="button" aria-pressed="true">create_doctor</a>
-                    </div>
+                        <button type="button" class="btn btn-danger" id="btn_delete_all">delete_select</button>
+                </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -45,6 +46,8 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                 <th><input name="select_all"  id="example-select-all"  type="checkbox"/></th>
+                                <th >Image</th>
                                 <th >Name</th>
                                 <th >Email</th>
                                 <th>Section</th>
@@ -59,7 +62,16 @@
                             <tbody>
                           @foreach($doctors as $doctor)
                               <tr>
-                                  <td></td>
+                                <td>{{ $loop->iteration }}</td>
+                                  <td><input type="checkbox" name="delete_select" value="{{$doctor->id}}" class="delete_select"></td>
+                                  <td>
+                                     @if($doctor->image)
+                                     <img src="{{Url::asset('storage/Doctors/'.$doctor->image->image_name)}}" height="50px" width="50px" alt="">
+                                      @else
+                                          <img src="{{Url::asset('Dashboard/img/R.jpeg')}}" height="50px" width="50px" alt="">
+                                      @endif
+
+                                  </td>
                                   <td>{{ $doctor->name }}</td>
                                   <td>{{ $doctor->email }}</td>
                                   <td>{{ $doctor->section->name}}</td>
@@ -78,6 +90,7 @@
                                   </td>
                               </tr>
                               @include('dashboard.doctors.delete')
+                               @include('Dashboard.Doctors.select_delete')
                           @endforeach
                             </tbody>
                         </table>
@@ -117,4 +130,37 @@
     <!--Internal  Notify js -->
     <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
     <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
+
+
+
+ <script>
+        $(function() {
+            jQuery("[name=select_all]").click(function(source) {
+                checkboxes = jQuery("[name=delete_select]");
+                for(var i in checkboxes){
+                    checkboxes[i].checked = source.target.checked;
+                }
+            });
+        })
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#btn_delete_all").click(function () {
+                var selected = [];
+                $("#example input[name=delete_select]:checked").each(function () {
+                    selected.push(this.value);
+                });
+
+                if (selected.length > 0) {
+                    $('#delete_select').modal('show')
+                    $('input[id="delete_select_id"]').val(selected);
+                }
+            });
+        });
+    </script>
+
+
+
 @endsection

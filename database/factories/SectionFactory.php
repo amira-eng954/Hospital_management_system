@@ -18,7 +18,9 @@ class SectionFactory extends Factory
     {
         return [
             //
-            'name'=>$this->faker->unique()->randomElement(['قسم جراحه',"قسم عظام","قسم عيون","قسم نسا","قسم باطنه"])
+            'name'=>$this->faker->unique()->randomElement(['قسم جراحه',"قسم عظام","قسم عيون","قسم نسا","قسم باطنه"]),
+            'des'=>$this->faker->paragraph
         ];
+
     }
 }

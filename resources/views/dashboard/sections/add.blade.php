@@ -12,6 +12,11 @@
                 <div class="modal-body">
                     <label for="exampleInputPassword1">Name_Section</label>
                     <input type="text" name="name" class="form-control">
+
+                    <label for="exampleInputPassword1">Des_Section</label>
+                    <input type="text" name="des" class="form-control">
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>

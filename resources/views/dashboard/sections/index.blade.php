@@ -31,7 +31,8 @@
 									<table class="table text-md-nowrap" id="example1">
 										<thead>
 											<tr>
-												<th class="wd-15p border-bottom-0"> name</th>
+												<th class="wd-15p border-bottom-0"> Name</th>
+												<th class="wd-15p border-bottom-0"> Description </th>
 												<th class="wd-15p border-bottom-0"> created_at</th>
 												<th class="wd-20p border-bottom-0">operations</th>
 												
@@ -44,6 +45,7 @@
 											<tr>
 												
 												<td>{{$section->name}}</td>
+												<td>{{\Str::limit($section->des,50)}}</td>
 												<td>{{$section->created_at}}</td>
 												<td>
 													  <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"  data-toggle="modal" href="#edit{{$section->id}}"><i class="las la-pen"></i></a>

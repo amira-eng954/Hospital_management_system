@@ -36,7 +36,8 @@ class SectionController extends Controller
      public function store(Request $request)
     {
          $section=$request->validate([
-            'name'=>"required|string"
+            'name'=>"required|string",
+            'des'=>"required|string"
          ]);
          $section=Section::create($section);
        
@@ -53,7 +54,8 @@ class SectionController extends Controller
     {
          $section=Section::find($id);
          $sections=$request->validate([
-            'name'=>"required|string"
+            'name'=>"required|string",
+             'des'=>"required|string"
          ]);
          $section->update($sections);
          return redirect()->route('section.index')->with('update',"Section updated suc");
