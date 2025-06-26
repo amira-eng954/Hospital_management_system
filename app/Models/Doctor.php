@@ -21,9 +21,9 @@ class Doctor extends Authenticatable
         'name',
         'email',
         'password',
-        'price',
+       
         'phone',
-        'oppointment',
+       
         'section_id',
         'status',
        
@@ -60,4 +60,9 @@ class Doctor extends Authenticatable
     {
         return $this->belongsTo(Section::class);
     }
+
+     public function appointment_doctor()
+     {
+        return $this->belongsToMany(Appointment::class);
+     }
 }

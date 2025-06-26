@@ -124,10 +124,10 @@ class DoctorController extends Controller
         'name'=>"required|string|max:255",
         'email'=>"required|email|unique:doctors,email",
         'password'=>"required|min:3",
-        'price'=>"required",
+       
          'phone'=>"required",
-        'oppointment'=>"required|array",
-        'oppointment.*'=>"required|string",
+        // 'oppointment'=>"required|array",
+        // 'oppointment.*'=>"required|string",
         'section_id'=>"required|exists:sections,id",
 
         
