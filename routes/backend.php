@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\SingleServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -49,7 +50,15 @@ Route::get('/dashboard/admin', function () {
 
     ///doctor////////////
     route::resource('doctors',DoctorController::class);
+    route::post("update_password",[DoctorController::class,"update_password"])->name('update_password');
+        route::post("update_status",[DoctorController::class,"update_status"])->name('update_status');
     ////////end doctor/////////
+
+
+    /////////////////////service//////////////
+
+    route::resource("services",SingleServiceController::class);
+    //////////////////end service/////////
 
  });
 ////////////////////////////////////////

@@ -38,6 +38,7 @@
                 <div class="card-body">
                     <form action="{{ route('doctors.update',$doctor->id) }}" method="post" autocomplete="off" enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        @method('PUT')
                         <div class="pd-30 pd-sm-40 bg-gray-200">
 
                             <div class="row row-xs align-items-center mg-b-20">
@@ -105,7 +106,7 @@
                                 </div>
 
                                 <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <select multiple="multiple" class="testselect2" name="oppointment[]">
+                                    <select multiple="multiple" class="testselect2" name="appointment[]">
                                         <option selected value="" selected disabled>-- حدد المواعيد --</option>
 
                                         @foreach($doctor->appointment_doctor as $appoint)

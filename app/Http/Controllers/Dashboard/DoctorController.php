@@ -171,8 +171,49 @@ catch (\Exception $e) {
       
     }
 
-    public function update()
+    public function update(Request $request ,$id)
     {
+ 
+      $do=Doctor::find($id);
+       $doctor=$request->validate([
+        'name'=>"required|string|max:255",
+        'email'=>"required|email|unique:doctors,email,".$do->id,
+         'phone'=>"required",
+        'section_id'=>"required|exists:sections,id",
+       ]);
+        DB::beginTransaction();
+      try {
+
+         $do->update($doctor);
+        if($request->has('photo'))
+        {
+          if($do->image)
+          {
+            $img=$do->image->image_name;
+            $this->deleteImage("Doctors/".$img,$request->id,$img);
+
+          }
+           $this->verifyAndStoreImage($request,'photo','Doctors',$do->id,"App\Models\Doctor");
+
+        }
+        
+        $do->appointment_doctor()->sync($request->appointmemt);
+       DB::commit(); // تم بنجاح، احفظ كل شيء
+     session()->flash('update',"doctor update suc");
+       return redirect()->route('doctors.index');
+} 
+
+catch (\Exception $e) {
+    DB::rollBack(); // حصل خطأ، رجع كل شيء كما كان
+     // أو تقدر تعرض رسالة خطأ
+    return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+}
+      
+
+
+
+
+
       
     }
     public function destroy(Request $request)
@@ -209,8 +250,41 @@ catch (\Exception $e) {
       
     }
 
+    public function update_password(Request $request)
+    {
+      $data=$request->validate([
+        'password'=>"required|min:3",
+          'password_confirmation'=>"required|min:3"
+           
+      ]);
+      $doctor=Doctor::where('id',$request->id);
+      $doctor->update([
+        'password'=>Hash::make($data['password'])
+      ]);
+      $doctor->save();
+      session()->flash('update',"update suc");
+      return redirect()->route('doctors.index');
 
 
+    }
+
+    public function update_status(Request $request)
+    {
+      $status=$request->validate([
+        'status'=>"required|in:0,1"
+      ]);
+      $doctor=Doctor::where("id",$request->id);
+      $doctor->update([
+        'status'=>$request->status
+      ]);
+    
+      session()->flash('update',"update suc");
+      return redirect()->route('doctors.index');
+
+
+
+
+}
 }
 
 

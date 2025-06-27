@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone');
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('status',[1,0])->default(1);
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

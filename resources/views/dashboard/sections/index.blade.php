@@ -44,7 +44,7 @@
 											@foreach($sections as $section)
 											<tr>
 												
-												<td>{{$section->name}}</td>
+												<td><a href="{{route('section.show',$section->id)}}">{{$section->name}}</a></td>
 												<td>{{\Str::limit($section->des,50)}}</td>
 												<td>{{$section->created_at}}</td>
 												<td>

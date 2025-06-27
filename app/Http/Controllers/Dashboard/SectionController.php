@@ -23,8 +23,12 @@ class SectionController extends Controller
 
     }
 
-     public function show()
+     public function show($id)
     {
+        $section=Section::find($id);
+        $doctors=$section->doctors;
+        return view("dashboard.sections.show",compact('doctors','section'));
+
         
     }
 
