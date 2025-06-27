@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginDoctorRequest;
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Section;
 use Illuminate\Http\Request;
@@ -113,7 +114,8 @@ class DoctorController extends Controller
     public function create()
     {
       $sections=Section::all();
-      return view("dashboard.doctors.create",compact('sections'));
+       $appointments=Appointment::all();
+      return view("dashboard.doctors.create",compact('sections','appointments'));
       
     }
 
@@ -134,7 +136,7 @@ class DoctorController extends Controller
        ]);
 
        $doctor['password']=Hash::make($doctor['password']);
-       $doctor['oppointment']=implode(',',$doctor['oppointment']);// اخليها كلمه واحده بس بيهم ,
+       //$doctor['oppointment']=implode(',',$doctor['oppointment']);// اخليها كلمه واحده بس بيهم ,
         DB::beginTransaction();
       try {
     
@@ -142,6 +144,7 @@ class DoctorController extends Controller
     // عمليات قاعدة البيانات:
     
         $d=Doctor::create($doctor);
+        $d->appointment_doctor()->attach($request->appointment);
         $this->verifyAndStoreImage($request,'photo','Doctors',$d->id,"App\Models\Doctor");
        
     DB::commit(); // تم بنجاح، احفظ كل شيء
@@ -163,7 +166,8 @@ catch (\Exception $e) {
     {
       $doctor=Doctor::find($id);
        $sections=Section::all();
-      return view("dashboard.doctors.edit",compact('sections','doctor'));
+       $appointments=Appointment::all();
+      return view("dashboard.doctors.edit",compact('sections','doctor',"appointments"));
       
     }
 

@@ -77,7 +77,13 @@
                                   <td>{{ $doctor->email }}</td>
                                   <td>{{ $doctor->section->name}}</td>
                                   <td>{{ $doctor->phone}}</td>
-                                  <td>{{ $doctor->oppointment}}</td>
+                                 
+                                  <td>
+                                     @foreach($doctor->appointment_doctor as $app)
+                                    {{ $app->name}}
+                                    @endforeach
+                                
+                                </td>
                                  
                                   <td>
                                       <div class="dot-label bg-{{$doctor->status == 1 ? 'success':'danger'}} ml-1"></div>
@@ -90,8 +96,8 @@
                                           <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown" type="button">Processes<i class="fas fa-caret-down mr-1"></i></button>
                                           <div class="dropdown-menu tx-13">
                                               <a class="dropdown-item" href="{{route('doctors.edit',$doctor->id)}}"><i style="color: #0ba360" class="text-success ti-user"></i>&nbsp;&nbsp;تعديل البيانات</a>
-                                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete{{$doctor->id}}"><i   class="text-primary ti-key"></i>&nbsp;&nbsp;تغير كلمة المرور</a>
-                                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete{{$doctor->id}}"><i   class="text-warning ti-back-right"></i>&nbsp;&nbsp;Approve</a>
+                                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#update_password{{$doctor->id}}""><i   class="text-primary ti-key"></i>&nbsp;&nbsp;تغير كلمة المرور</a>
+                                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#update_status{{$doctor->id}}"><i   class="text-warning ti-back-right"></i>&nbsp;&nbsp;Approve</a>
                                               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete{{$doctor->id}}"><i   class="text-danger  ti-trash"></i>&nbsp;&nbsp;delete</a>
 
                                           </div>
@@ -99,6 +105,8 @@
                                   </td>
                               </tr>
                               @include('dashboard.doctors.delete')
+                               @include('Dashboard.Doctors.update_status')
+                               @include('dashboard.doctors.update_password')
                                @include('Dashboard.Doctors.select_delete')
                           @endforeach
                             </tbody>
