@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DoctorController;
+use App\Http\Controllers\Dashboard\PatientController;
+use App\Http\Controllers\Dashboard\InsuranceController;
+use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
@@ -52,7 +55,13 @@ Route::get('/dashboard/admin', function () {
     route::resource('doctors',DoctorController::class);
     route::post("update_password",[DoctorController::class,"update_password"])->name('update_password');
         route::post("update_status",[DoctorController::class,"update_status"])->name('update_status');
+
+        
     ////////end doctor/////////
+    route::resource('patients',PatientController ::class);
+    route::resource('insurance',InsuranceController ::class);
+    Route::resource('Ambulance',AmbulanceController::class);
+   
 
 
     /////////////////////service//////////////

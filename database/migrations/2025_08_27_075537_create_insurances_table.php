@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('insurances', function (Blueprint $table) {
             $table->id();
-            $table->string('image_name');
-            // $table->integer('imageable_id');
-            // $table->string('imageable_type');
-            $table->morphs('imageable');
+             $table->string('insurance_code');
+            $table->string('discount_percentage');
+            $table->string('Company_rate');
+            $table->boolean('status');
+             $table->string('name');
+              $table->string('notes');
+
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('insurances');
     }
 };

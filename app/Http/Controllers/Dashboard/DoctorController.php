@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use App\Traits\UploadTrait;
+use App\Services\Upload;
 use Illuminate\View\View;
 
 class DoctorController extends Controller
@@ -137,6 +138,7 @@ class DoctorController extends Controller
 
        $doctor['password']=Hash::make($doctor['password']);
        //$doctor['oppointment']=implode(',',$doctor['oppointment']);// اخليها كلمه واحده بس بيهم ,
+
         DB::beginTransaction();
       try {
     
@@ -145,8 +147,14 @@ class DoctorController extends Controller
     
         $d=Doctor::create($doctor);
         $d->appointment_doctor()->attach($request->appointment);
-        $this->verifyAndStoreImage($request,'photo','Doctors',$d->id,"App\Models\Doctor");
-       
+        // $this->verifyAndStoreImage($request,'photo','Doctors',$d->id,"App\Models\Doctor");
+        if($request->hasFile('photo'))
+        {
+                 //(new Upload())->Upload($request->file('image'),'Doctors',$d);
+                 (new Upload())->upload($request->file('photo'),'Doctors',$d);
+        }
+         
+        
     DB::commit(); // تم بنجاح، احفظ كل شيء
      session()->flash('add',"doctor add suc");
        return redirect()->route('doctors.index');
@@ -190,10 +198,12 @@ catch (\Exception $e) {
           if($do->image)
           {
             $img=$do->image->image_name;
-            $this->deleteImage("Doctors/".$img,$request->id,$img);
+             (new Upload())->delete('Doctors',$img);
+            //$this->deleteImage("Doctors/".$img,$request->id,$img);
 
           }
-           $this->verifyAndStoreImage($request,'photo','Doctors',$do->id,"App\Models\Doctor");
+          // $this->verifyAndStoreImage($request,'photo','Doctors',$do->id,"App\Models\Doctor");
+          (new Upload())->upload($request->file('photo'),"Doctors",$do);
 
         }
         
