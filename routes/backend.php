@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
+use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
@@ -90,6 +91,10 @@ Route::get('/dashboard/admin', function () {
      Route::resource('Receipt',ReceiptAccountController::class);
      
    /////////////////////////////////////////////////////////end Receipt/////////////////
+   //////////////////////////////////////////////////////////Payment///////////////////
+
+          Route::resource("Payment",PaymentAccountController::class);
+   /////////////////////////////////////////////////////////end Payment///////////////
 
  });
 ////////////////////////////////////////

@@ -32,7 +32,7 @@ class ReceiptAccountController extends Controller
       $ReceiptAccount=  ReceiptAccount::create([
             'date'=>date('y-m-d'),
             'patient_id'=>$request->patient_id,
-            'Debit'=>$request->Debit,
+            'amount'=>$request->amount,
             'description'=>$request->description
       ]);
 
@@ -40,14 +40,14 @@ class ReceiptAccountController extends Controller
       FundAccount::create([
         'receipt_id'=>$ReceiptAccount->id,
         'date'=>date('y-m-d'),
-        'Debit'=> $ReceiptAccount->Debit,
+        'Debit'=> $ReceiptAccount->amount,
         'credit'=>0.00
       ]);
 
       $PatientAccount= PatientAccount::create([
         'date'=>date('y-m-d'),
         'Debit'=>0.00,
-        'credit'=>$ReceiptAccount->Debit,
+        'credit'=>$ReceiptAccount->amount,
          'patient_id'=>$request->patient_id,
         'receipt_id'=>$ReceiptAccount->id,
       ]);
@@ -83,7 +83,7 @@ class ReceiptAccountController extends Controller
           $receipt_accounts->update([
             'date'=>date('y-m-d'),
             'patient_id'=>$request->patient_id,
-            'Debit'=>$request->Debit,
+            'amount'=>$request->amount,
             'description'=>$request->description
           ]);
           $receipt_accounts->save();
@@ -92,7 +92,7 @@ class ReceiptAccountController extends Controller
         $FundAccount->update([
         'receipt_id'=>$request->id,
         'date'=>date('y-m-d'),
-        'Debit'=> $receipt_accounts->Debit,
+        'Debit'=> $receipt_accounts->amount,
         'credit'=>0.00
       ]);
 
@@ -100,7 +100,7 @@ class ReceiptAccountController extends Controller
        $PatientAccount->update([
         'date'=>date('y-m-d'),
         'Debit'=>0.00,
-        'credit'=>$receipt_accounts->Debit,
+        'credit'=>$receipt_accounts->amount,
          'patient_id'=>$request->patient_id,
         'receipt_id'=>$request->id,
       ]);
