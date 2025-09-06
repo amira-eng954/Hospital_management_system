@@ -79,6 +79,8 @@ Route::get('/dashboard/admin', function () {
   
   ///////////////////////////////////////////////////////////////invoices/////////////////////////
                 Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
+                Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Print_single_invoices');
+
   /////////////////////////////////////////////////////////////endinvoices///////////////////////
    
 

@@ -19,6 +19,11 @@ class PaymentAccountController extends Controller
         $payments=PaymentAccount::all();
          return view("dashboard.Payment.index",compact("payments"));
     }
+    public function show($id)
+    { $payment_account= PaymentAccount::findorfail($id);
+       return view("dashboard.Payment.print",compact("payment_account"));
+
+    }
 
      public function create()
     {

@@ -19,6 +19,12 @@ class ReceiptAccountController extends Controller
     }
     //
 
+    public function show($id)
+    { $receipt=ReceiptAccount::findorfail($id);
+       return view("dashboard.Receipt.print",compact("receipt"));
+
+    }
+
      public function create()
     {
          $Patients=Patient::all();
