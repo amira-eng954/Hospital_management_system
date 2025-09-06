@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-/////////////////////////////////////////pacients/////////////////////////
+/////////////////////////////////////////pacients///////////////////////////////////
 Route::get('/dashboard/user', function () {
     return view('dashboard.user.dashboard');
 })->middleware('auth')->name('dashboard.user');
@@ -24,9 +24,9 @@ Route::get('/dashboard/user', function () {
 
 
 /////////////////////////////////////////doctors/////////////////////////
-// Route::get('/dashboard/doctor', function () {
-//     return view('dashboard.doctors.dashboard');
-// })->middleware('auth')->name('dashboard.doctor');
+Route::get('/dashboard/doctor', function () {
+    return view('dashboard.Doctor.dashboard');
+})->middleware(['auth:doctor'])->name('dashboard.doctor');
 
 
 

@@ -10,16 +10,16 @@
 		@include('dashboard.layouts.head')
 	</head>
 
-	<body class="main-body app sidebar-mini ">
+	<body class="main-body app sidebar-mini">
 		<!-- Loader -->
 		<div id="global-loader">
-			<img src="{{URL::asset('Dashboard./img/loader.svg')}}" class="loader-img" alt="Loader">
+			<img src="{{URL::asset('Dashboard/img/loader.svg')}}" class="loader-img" alt="Loader">
 		</div>
 		<!-- /Loader -->
-		@include('dashboard.layouts.main-sidebar')		
+		@include('dashboard.layouts.main-sidebar-doctor')
 		<!-- main-content -->
 		<div class="main-content app-content">
-			@include('dashboard.layouts.main-header')			
+			@include('dashboard.layouts.main-header')
 			<!-- container -->
 			<div class="container-fluid">
 				@yield('page-header')
@@ -27,6 +27,6 @@
 				@include('dashboard.layouts.sidebar')
 				@include('dashboard.layouts.models')
             	@include('dashboard.layouts.footer')
-				@include('dashboard.layouts.footer-scripts')	
+				@include('dashboard.layouts.footer-scripts')
 	</body>
 </html>

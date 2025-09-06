@@ -31,7 +31,7 @@
                                     <div class="mb-5 d-flex"> <a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('Dashboard/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Va<span>le</span>x</h1></div>
                                     <div class="card-sigin">
                                         <div class="main-signup-header">
-                                            <h2>{{trans('Dashboard/login_trans.Welcome')}}</h2>
+                                            <h2>Welcome</h2>
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
                                                     <ul>
@@ -48,14 +48,14 @@
 
 
                                             <div class="form-group">
-                                                <label for="exampleFormControlSelect1">{{trans('Dashboard/login_trans.Select_Enter')}}</label>
+                                                <label for="exampleFormControlSelect1">Select_Enter</label>
                                                 <select class="form-control" id="sectionChooser">
-                                                    <option value="" selected disabled>{{trans('Dashboard/login_trans.Choose_list')}}</option>
-                                                    <option value="user">{{trans('Dashboard/login_trans.user')}}</option>
-                                                    <option value="admin">{{trans('Dashboard/login_trans.admin')}}</option>
-                                                    <option value="doctor">الدخول دكتور</option>
-                                                    <option value="ray_employee">موظف اشعة</option>
-                                                    <option value="laboratorie_employee">موظف مختبر</option>
+                                                    <option value="" selected disabled>Choose_list</option>
+                                                    <option value="user">patient</option>
+                                                    <option value="admin">admin</option>
+                                                    <option value="doctor">Doctor</option>
+                                                    <option value="ray_employee">ray_employee</option>
+                                                    <option value="laboratorie_employee">laboratorie_employee</option>
                                                 </select>
                                             </div>
 

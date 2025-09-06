@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\Dashboard\DoctorController;
+use App\Http\Controllers\Auth\DoctorController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware('guest')->group(function () {
@@ -19,30 +19,28 @@ use Illuminate\Support\Facades\Route;
 
          Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
-        /////////////////////////////////////////////user/////////////////////
 
-          Route::post('register', [RegisteredUserController::class, 'store'])->name('user.register');
-   
-          Route::post('login/user', [AuthenticatedSessionController::class, 'store'])->name('login.user');
+
+        /////////////////////////////////////////////user////////////////////////////////////////////////
+           Route::post('register', [RegisteredUserController::class, 'store'])->name('user.register');
+           Route::post('login/user', [AuthenticatedSessionController::class, 'store'])->name('login.user');
            Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout.user');
-
-          
+ 
+        //////////////////////////////////////////////////////////////////end user////////////////////////
    
-        //////////////////////////end user////////////////////////
-   
-    //////////////////////////////admin//////////////////////
+    //////////////////////////////admin//////////////////////////////////////////////////////////////////
      Route::post('admin/register',[AdminController::class, 'register'])->name('admin.register');
      Route::post('login/admin',[AdminController::class, 'store'])->name('login.admin');
       Route::post('admin/logout', [AdminController::class, 'destroy'])->middleware('auth:admin')->name('admin.logout');
 
-     //////////////////////////end admin/////////////////
+     ////////////////////////////////////////////////////end admin/////////////////////////////////////////
 
-     ////////////////////////////////////doctors//////////////////
+     ////////////////////////////////////doctors////////////////////////////////////////////////////
       Route::post('doctor/register',[DoctorController::class, 'register'])->name('doctor.register');
       Route::post('login/doctor',[DoctorController::class, 'store'])->name('login.doctor');
       Route::post('doctor/logout', [DoctorController::class, 'destroy'])->middleware('auth:doctor')->name('doctor.logout');
 
-     ///////////////////////////////////end doctor////////////////////
+     ///////////////////////////////////end doctor///////////////////////////////////////////////////
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
