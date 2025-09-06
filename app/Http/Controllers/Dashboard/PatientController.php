@@ -4,6 +4,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use App\Http\Requests\PatientRequest;
 use App\Http\Requests\PatientUpdateRequest;
+use  App\Models\single_invoice;
+use App\Models\PatientAccount;
+use App\Models\ReceiptAccount;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -17,8 +20,18 @@ class PatientController extends Controller
 
     
     }
-    public function show()
+    public function show($id)
     {
+      $Patient=Patient::findorfail($id);
+      $invoices=single_invoice::where("patient_id",'=',$id)->get();
+      $receipt_accounts=ReceiptAccount::where("patient_id",'=',$id)->get();
+       $Patient_accounts = PatientAccount::orWhereNotNull('single_invoice_id')
+            ->orWhereNotNull('receipt_id')
+            ->orWhereNotNull('Payment_id')
+            ->where('patient_id', $id)
+            ->get();
+           // return   $Patient_accounts;
+        return view('dashboard.patients.show', compact('Patient', 'invoices', 'receipt_accounts', 'Patient_accounts'));
         
     }
     public function create(Request $request)
