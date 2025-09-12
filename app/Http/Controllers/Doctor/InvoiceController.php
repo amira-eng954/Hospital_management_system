@@ -10,13 +10,31 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // قايمه الكشوفات تحت الاجراء
     public function index()
     {
-        $invoices=single_invoice::where("doctor_id",'=',auth()->user()->id)->get();
-        //dd( $invoices);
+        $invoices=single_invoice::where("doctor_id",'=',auth()->user()->id)->where('invoice_status',1)->get();
         return view("dashboard.Doctor.Invoices.index",compact("invoices"));
 
         
+    }
+// قايمه الكشوفات  المراجعه
+    public function reviewInvoices()
+    {
+         $invoices=single_invoice::where("doctor_id",'=',auth()->user()->id)->where('invoice_status',2)->get();
+        return view("dashboard.Doctor.Invoices.review_invoices",compact("invoices"));
+
+
+    }
+
+// قايمه الكشوفات المكتمله
+    public function completedInvoices()
+    {
+
+         $invoices=single_invoice::where("doctor_id",'=',auth()->user()->id)->where('invoice_status',3)->get();
+        return view("dashboard.Doctor.Invoices.completed_invoices",compact("invoices"));
+
+       
     }
 
     /**

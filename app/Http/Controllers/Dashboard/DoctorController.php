@@ -16,7 +16,7 @@ use App\Traits\UploadTrait;
 use App\Services\Upload;
 use Illuminate\View\View;
 
-class  extends Controller
+class  DoctorController extends Controller
 {
     //
     use  UploadTrait;

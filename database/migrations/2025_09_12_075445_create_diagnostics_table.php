@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('diagnostics', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->dateTime('review_date')->nullable();
             $table->longText('diagnosis');
             $table->longText('medicine');
             $table->foreignId('invoice_id')->references('id')->on('single_invoices')->onDelete('cascade');
