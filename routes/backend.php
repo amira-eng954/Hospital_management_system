@@ -100,4 +100,3 @@ Route::get('/dashboard/admin', function () {
 
  });
 ////////////////////////////////////////
-require __DIR__.'/auth.php';
