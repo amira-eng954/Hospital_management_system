@@ -73,24 +73,26 @@
                                                           <span class="badge badge-success">مكتملة</span>
                                                        @endif
                                                    </td>
-
+                                                   <div class="dropdown">
                                                    <td>
 
-                                                       <div class="dropdown">
-                                                           <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown" type="button">Processes<i class="fas fa-caret-down mr-1"></i></button>
+                                                       
+                                                           <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown" type="button">Processes <i class="fas fa-caret-down mr-1"></i></button>
                                                            <div class="dropdown-menu tx-13">
                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_diagnosis{{$invoice->id}}"><i class="text-primary fa fa-stethoscope"></i>&nbsp;&nbsp;اضافة تشخيص </a>
                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_review{{$invoice->id}}"><i class="text-warning far fa-file-alt"></i>&nbsp;&nbsp;اضافة مراجعة </a>
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#xray_conversion{{$invoice->id}}"><i class="text-primary fas fa-x-ray"></i>&nbsp;&nbsp;تحويل الي الاشعة </a>
-                                                               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#update_status"><i class="text-warning fas fa-syringe"></i>&nbsp;&nbsp;تحويل الي المختبر</a>
+                                                               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#xray_conversion{{$invoice->id}}"><i class="text-primary fas fa-x-ray"></i>&nbsp;&nbsp;تحويل الي الاشعة </a>
+                                                               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#laboratorie_conversion{{$invoice->id}}"><i class="text-warning fas fa-syringe"></i>&nbsp;&nbsp;تحويل الي المختبر </a>
                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete"><i class="text-danger  ti-trash"></i>&nbsp;&nbsp;حذف البيانات</a>
                                                            </div>
-                                                       </div>
+                                                       
                                                    </td>
+                                                   </div>
                                                </tr>
                                                @include('dashboard.Doctor.Invoices.add_diagnosis')
-                                                @include('dashboard.Doctor.Invoices.add_review')
-                                                  @include('dashboard.Doctor.Invoices.xray_conversion')
+                                               @include('dashboard.Doctor.Invoices.add_review')
+                                               @include('dashboard.Doctor.Invoices.xray_conversion')
+                                               @include('dashboard.Doctor.Invoices.Laboratorie_conversion')
                                            @endforeach
                                             </tbody>
                                         </table>
@@ -101,7 +103,6 @@
                         <!--/div-->
 
                     <!-- /row -->
-
 				</div>
 				<!-- row closed -->
 
@@ -112,10 +113,10 @@
 @section('js')
 
 
+
     <!--Internal  Notify js -->
     <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
     <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
-
 
     <!--Internal  Datepicker js -->
     <script src="{{URL::asset('dashboard/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
@@ -135,7 +136,9 @@
     <script src="{{URL::asset('dashboard/plugins/pickerjs/picker.min.js')}}"></script>
     <!-- Internal form-elements js -->
     <script src="{{URL::asset('dashboard/js/form-elements.js')}}"></script>
-      <script>
+
+
+    <script>
         $('#review_date').datetimepicker({
 
         })

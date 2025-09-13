@@ -6,6 +6,7 @@ use App\Http\Controllers\Doctor\InvoiceController;
 use App\Http\Controllers\Dashboard_doctor\RayController;
 use App\Http\Controllers\Dashboard_doctor\PatientDetailsController;
 use App\Http\Controllers\Dashboard_doctor\DiagnosticController;
+use App\Http\Controllers\Dashboard_doctor\LaboratorieController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -58,6 +59,10 @@ Route::get('/dashboard/doctor', function () {
 /////////////////////////////////////////////////////////////patient_details/{id}////// 
 Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->name('patient_details');
 ///////////////////////////////////////////////////////////////////////end patient_details/{id}///////
+
+///////////////////////////////////////////////////////////////Laboratories//////////////
+ Route::resource('Laboratories', LaboratorieController::class);
+ /////////////////////////////////////////////////////////////////end Laboratories//////
 
  });
 
