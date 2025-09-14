@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\DoctorController;
+use App\Http\Controllers\Auth\RayEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware('guest')->group(function () {
@@ -41,6 +42,14 @@ use Illuminate\Support\Facades\Route;
       Route::post('doctor/logout', [DoctorController::class, 'destroy'])->middleware('auth:doctor')->name('doctor.logout');
 
      ///////////////////////////////////end doctor///////////////////////////////////////////////////
+
+     ////////////////////////////////////////////////////////ray_employee/////////////////
+      Route::post('ray_employee/register',[RayEmployeeController::class, 'register'])->name('ray_employee.register');
+      Route::post('login/ray_employee',[RayEmployeeController::class, 'store'])->name('login.ray_employee');
+      Route::post('ray_employee/logout', [RayEmployeeController::class, 'destroy'])->middleware(['auth:ray_employee'])->name('ray_employee.logout');
+
+      ///////////////////////////////////////////////////////////end ray_employee//////////////
+
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');

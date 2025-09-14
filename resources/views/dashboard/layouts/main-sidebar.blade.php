@@ -56,11 +56,7 @@
 
 							<li><a class="slide-item" href="{{route('insurance.index') }}">Insurance</a></li>
 							<li><a class="slide-item" href="{{route('Ambulance.index')}}"> Ambulance</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='contacts') }}">Contacts</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='image-compare') }}">Image-compare</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='notification') }}">Notification</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='widget-notification') }}">Widget-notification</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='treeview') }}">Treeview</a></li>
+							
 						</ul>
 					</li>
 					<li class="slide">
@@ -68,9 +64,7 @@
 						<ul class="slide-menu">
 							<li><a class="slide-item" href= "{{route('patients.create')}}"> insert patient</a></li>
 							<li><a class="slide-item" href="{{ route('patients.index') }}">All Patients</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='breadcrumbs') }}">Breadcrumbs</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='buttons') }}">Buttons</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='badge') }}">Badge</a></li>
+							
 							
 						</ul>
 					</li>
@@ -78,9 +72,7 @@
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24" ><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65 0-1.38 1.12-2.5 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 10 6.5 10s1.5.67 1.5 1.5S7.33 13 6.5 13zm3-4C8.67 9 8 8.33 8 7.5S8.67 6 9.5 6s1.5.67 1.5 1.5S10.33 9 9.5 9zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 6 14.5 6s1.5.67 1.5 1.5S15.33 9 14.5 9zm4.5 2.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5z" opacity=".3"/><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.21-.64-1.67-.08-.09-.13-.21-.13-.33 0-.28.22-.5.5-.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9zm4 13h-1.77c-1.38 0-2.5 1.12-2.5 2.5 0 .61.22 1.19.63 1.65.06.07.14.19.14.35 0 .28-.22.5-.5.5-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.14 8 7c0 2.21-1.79 4-4 4z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></svg><span class="side-menu__label">Invoices</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{ route('single_invoices') }}">single_invoices</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='carousel') }}">Carousel</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='collapse') }}">Collapse</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='modals') }}">Modals</a></li>
+							
 							
 						</ul>
 					</li>
@@ -90,20 +82,14 @@
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{route('Receipt.index')}}">سند قبض</a></li>
 							<li><a class="slide-item" href="{{ route('Payment.index') }}">سند صرف</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='mail-read') }}">Read-mail</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='mail-settings') }}">mail-settings</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chat') }}">Chat</a></li>
+							
 						</ul>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg><span class="side-menu__label">Forms</span><i class="angle fe fe-chevron-down"></i></a>
+						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg><span class="side-menu__label">الاشعه</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ url('/' . $page='form-elements') }}">Form Elements</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='form-advanced') }}">Advanced Forms</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='form-layouts') }}">Form Layouts</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='form-validation') }}">Form Validation</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='form-wizards') }}">Form Wizards</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='form-editor') }}">WYSIWYG Editor</a></li>
+							<li><a class="slide-item" href="{{route('ray_employee.index') }}">ray_employees</a></li>
+							
 						</ul>
 					</li>
 					<li class="slide">

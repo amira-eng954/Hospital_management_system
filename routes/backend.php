@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
+use App\Http\Controllers\Dashboard\RayEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,7 +23,7 @@ Route::get('/dashboard/user', function () {
 
 ///////////////////////////////////////////////////end  pacients//////////////////
 
-
+///dashboard/ray_employee
 /////////////////////////////////////////doctors/////////////////////////
 Route::get('/dashboard/doctor', function () {
     return view('dashboard.Doctor.dashboard');
@@ -93,10 +94,18 @@ Route::get('/dashboard/admin', function () {
      Route::resource('Receipt',ReceiptAccountController::class);
      
    /////////////////////////////////////////////////////////end Receipt/////////////////
+
+
    //////////////////////////////////////////////////////////Payment///////////////////
 
           Route::resource("Payment",PaymentAccountController::class);
    /////////////////////////////////////////////////////////end Payment///////////////
+
+      //############################# RayEmployee route ##########################################
+
+        Route::resource('ray_employee', RayEmployeeController::class);
+
+        //############################# end RayEmployee route ######################################
 
  });
 ////////////////////////////////////////
