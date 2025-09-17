@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Doctor;
 use  App\Models\single_invoice;
+ use  App\Models\Ray;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -37,10 +38,20 @@ class InvoiceController extends Controller
        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    
+    public function show($id)
+    {
+        
+         $rays = Ray::findorFail($id);
+          if($rays->doctor_id != auth()->user()->id)
+          {
+             return redirect()->route('404');
+          }
+         //$rays->image();
+        return view('dashboard.Doctor.Invoices.view_rays', compact('rays'));
+    }
+
+     public function create(Request $request)
     {
         //
     }
@@ -56,11 +67,7 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
-
+   
     /**
      * Show the form for editing the specified resource.
      */

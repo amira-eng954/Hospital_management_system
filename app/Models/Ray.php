@@ -13,4 +13,20 @@ class Ray extends Model
         return $this->belongsTo(Doctor::class);
 
      }
+
+     public function employee()
+     {  
+       return $this->belongsTo(RayEmployee::class);
+
+     }
+      public function patient()
+     {  
+       return $this->belongsTo(Patient::class);
+
+     }
+
+     public function image()
+     {
+       return $this->morphMany(Image::class,'imageable');
+     }
 }

@@ -271,7 +271,7 @@ catch (\Exception $e) {
       $doctor->update([
         'password'=>Hash::make($data['password'])
       ]);
-      $doctor->save();
+      
       session()->flash('update',"update suc");
       return redirect()->route('doctors.index');
 
