@@ -64,6 +64,12 @@ Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->n
  Route::resource('Laboratories', LaboratorieController::class);
  /////////////////////////////////////////////////////////////////end Laboratories//////
 
+ ///////////////////////////404/////////////////////////////////////////////////////////
+  Route::get('/404', function(){
+  return view('dashboard.404');
+  })->name('404');
+
+
  });
 
 

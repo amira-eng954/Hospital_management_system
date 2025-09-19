@@ -43,10 +43,14 @@ class InvoiceController extends Controller
     {
         
          $rays = Ray::findorFail($id);
-          if($rays->doctor_id != auth()->user()->id)
-          {
-             return redirect()->route('404');
-          }
+         //return $rays;
+        
+            
+         if($rays->doctor_id !=auth()->user()->id){
+            //abort(404);
+        
+            return redirect()->route('404');
+        }
          //$rays->image();
         return view('dashboard.Doctor.Invoices.view_rays', compact('rays'));
     }

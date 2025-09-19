@@ -57,4 +57,15 @@ class InvoiceController extends Controller
     {
         
     }
+
+    public function viewRays($id)
+    {
+        $rays=Ray::findorFail($id);
+        if($rays->employee_id != auth()->user()->id)
+        {
+            return redirect()->route('404');
+
+        }
+         return view('dashboard.dashboard_ray_employee.invoices.patient_details', compact('rays'));
+    }
 }

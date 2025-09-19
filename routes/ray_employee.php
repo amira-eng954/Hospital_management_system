@@ -29,6 +29,16 @@ Route::middleware(['auth:ray_employee'])->group(function(){
         Route::get('completed_invoices',[InvoiceController::class,'completed_invoices'])->name('completed_invoices');
         //############################# end completed_invoices route ##########################################
 
+        //############################# view_rays/{id} route ##########################################
+         Route::get('view_rays/{id}', [InvoiceController::class,'viewRays'])->name('view_rays');
+         //############################# view_rays/{id} route ##########################################
+
+         Route::get('/404', function(){
+             return view('dashboard.404');
+              })->name('404');
+
+
+
 
 });
 
