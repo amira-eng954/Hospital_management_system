@@ -10,15 +10,15 @@
 
       @if(Auth::guard('admin')->check())
         @include('dashboard.layouts.main-sidebar.admin-sidebar-main')
-    @endif
+      @endif
 
-    @if(Auth::guard('doctor')->check())
+     @if(Auth::guard('doctor')->check())
         @include('dashboard.layouts.main-sidebar.doctor-sidebar-main')
-    @endif
+     @endif
 
-    @if(Auth::guard('ray_employee')->check())
+     @if(Auth::guard('ray_employee')->check())
         @include('dashboard.layouts.main-sidebar.ray_employee-sidebar-main')
-    @endif
+     @endif
 
 
 </aside>
