@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
              $table->longText('description');
             $table->foreignId('invoice_id')->references('id')->on('single_invoices')->onDelete('cascade');
-            $table->foreignId('employee_id')->references('id')->on('laboratorie_employees')->onDelete('cascade');
+            $table->foreignId('employee_id')->nullable()->references('id')->on('laboratorie_employees')->onDelete('cascade');
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreignId('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
             $table->longText('description_employee')->nullable();

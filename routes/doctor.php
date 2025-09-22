@@ -23,7 +23,7 @@ Route::get('/dashboard/doctor', function () {
  
 
     //Route::middleware(['auth:doctor'])->prefix('doctor')->group(function(){
-    Route::group(["middleware"=>["auth:doctor"],"prefix"=>"doctor"],function(){
+    Route::group(["middleware"=>["auth:doctor"]],function(){
 
   // قايمه الكشوفات المكتمله
 //////////////////////////////////////////////////////////////////////////"completedInvoices"/////////////////
@@ -62,6 +62,8 @@ Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->n
 
 ///////////////////////////////////////////////////////////////Laboratories//////////////
  Route::resource('Laboratories', LaboratorieController::class);
+ 
+  Route::get('showLaboratorie/{id}', [LaboratorieController::class,'view_laboratories'])->name('showLaboratorie');
  /////////////////////////////////////////////////////////////////end Laboratories//////
 
  ///////////////////////////404/////////////////////////////////////////////////////////

@@ -36,5 +36,16 @@ class LaboratorieController extends Controller
         $ray->delete();
          return redirect()->back();
     }
+
+      public function view_laboratories($id)
+    {
+        $laboratories = Laboratorie::findorFail($id);
+        //return "qqq";
+        if($laboratories->doctor_id !=auth()->user()->id){
+            //abort(404);
+            return redirect()->route('404');
+        }
+       return view('dashboard.Doctor.Invoices.view_laboratories', compact('laboratories'));
+    }
 }
 

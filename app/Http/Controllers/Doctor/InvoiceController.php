@@ -55,6 +55,9 @@ class InvoiceController extends Controller
         return view('dashboard.Doctor.Invoices.view_rays', compact('rays'));
     }
 
+
+   
+
      public function create(Request $request)
     {
         //

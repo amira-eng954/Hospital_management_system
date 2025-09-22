@@ -268,6 +268,8 @@
 									   <form method="POST" action="{{ route('logout.user') }}"> 
 								     @elseif(auth('admin')->check())  
 									   <form method="POST" action="{{ route('admin.logout') }}">
+									 @elseif(auth('laboratorie_employee')->check())
+									      <form method="POST" action="{{ route('laboratorie_employee.logout') }}">
 									 else
 										 <form method="POST" action="{{ route('doctor.logout') }}">
 										 @endif

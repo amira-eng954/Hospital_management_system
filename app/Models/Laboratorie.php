@@ -14,4 +14,18 @@ class Laboratorie extends Model
         return $this->belongsTo(Doctor::class);
 
      }
+    
+
+      public function  Patient()
+     {
+        return $this->belongsTo(Patient::class);
+
+     }
+
+     public function image()
+     {
+       return $this->morphMany(Image::class,'imageable');
+     }
+
+     
 }

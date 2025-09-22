@@ -17,7 +17,7 @@ class LaboratorieEmployeeController extends Controller
 
 
     }
-
+    
      public function store(Request $request)
     {
         $data=$request=$request->validate([
