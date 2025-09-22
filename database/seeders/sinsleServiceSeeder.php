@@ -14,9 +14,9 @@ class sinsleServiceSeeder extends Seeder
     {
         //
         DB::table("services")->insert([
-            ['name'=>"اشعه مقطعيه",'des'=>"jjjj",'status'=>"1",'price'=>"1234"],
-            ['name'=>"كشف عادى",'des'=>"pppp",'status'=>"1",'price'=>"345"],
-            ['name'=>"كشف مستعجل",'des'=>"kkkk",'status'=>"0",'price'=>"1234"]
+            ['name'=>"اشعه مقطعيه",'des'=>"jjjj",'status'=>"1",'price'=>"1234",'created_at'=>now()],
+            ['name'=>"كشف عادى",'des'=>"pppp",'status'=>"1",'price'=>"345",'created_at'=>now()],
+            ['name'=>"كشف مستعجل",'des'=>"kkkk",'status'=>"0",'price'=>"1234",'created_at'=>now()]
         ]);
     }
 }

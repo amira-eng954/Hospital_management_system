@@ -50,6 +50,12 @@ use Illuminate\Support\Facades\Route;
 
       ///////////////////////////////////////////////////////////end ray_employee//////////////
 
+      //////////////////////////////////////////////////////////////login.laboratorie_employee///
+       Route::post('laboratorie_employee/register',[RayEmployeeController::class, 'register'])->name('laboratorie_employee.register');
+      Route::post('login/laboratorie_employee',[RayEmployeeController::class, 'store'])->name('login.laboratorie_employee');
+      Route::post('laboratorie_employee/logout', [LEmployeeController::class, 'destroy'])->middleware(['auth:laboratorie_employee'])->name('laboratorie_employee.logout');
+      ///////////////////////////////////////////////////////////////end laboratorie_employee////
+
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');

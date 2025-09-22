@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
               ImageSeeder::class,
               sinsleServiceSeeder::class,
               PatientSeeder::class,
-              RayEmployeeSeeder::class
+              RayEmployeeSeeder::class,
+              laboratorie_employeeSeeder::class
 
         ]);
     }

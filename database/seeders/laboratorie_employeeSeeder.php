@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class RayEmployeeSeeder extends Seeder
+class laboratorie_employeeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,9 @@ class RayEmployeeSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('ray_employees')->delete();
-        DB::table('ray_employees')->insert([
-             ['name'=>'مكه','email'=>"a@a.com",'Password'=>Hash::make(123)]
+         DB::table("laboratorie_employees")->delete();
+         DB::table('laboratorie_employees')->insert([
+             ['name'=>'مسك','email'=>"a@a.com",'Password'=>Hash::make(123),'created_at'=>now()]
         ]);
     }
 }

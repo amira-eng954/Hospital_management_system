@@ -15,6 +15,7 @@ class DoctorSeeder extends Seeder
     public function run(): void
     {
         //
+       
 
        $doctors= \App\Models\Doctor::factory()->count(30)->create();
 

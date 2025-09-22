@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\RayEmployeeController;
+use App\Http\Controllers\Dashboard\LaboratorieEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -106,6 +107,14 @@ Route::get('/dashboard/admin', function () {
         Route::resource('ray_employee', RayEmployeeController::class);
 
         //############################# end RayEmployee route ######################################
+
+         //############################# laboratorie_employee route ##########################################
+
+        Route::resource('laboratorie_employee', LaboratorieEmployeeController::class);
+
+        //############################# end laboratorie_employee route ######################################
+
+        
 
  });
 ////////////////////////////////////////
