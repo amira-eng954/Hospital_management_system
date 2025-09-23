@@ -25,10 +25,10 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
+   
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard.user', absolute: false));
+        return redirect()->intended(route('dashboard.patient', absolute: false));
     }
 
     /**
@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::guard('patient')->logout();
 
         $request->session()->invalidate();
 

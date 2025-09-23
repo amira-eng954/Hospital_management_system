@@ -17,10 +17,10 @@ class PatientSeeder extends Seeder
         //
          DB::table("patients")->delete();
         DB::table("patients")->insert([
-          ['email'=>"a@a.com",'Password'=>Hash::make(123),'Date_Birth'=>now(),'Phone'=>"1116771",'Gender'=>"1",'Blood_Group'=>"O+",'name'=>"Ali",'address'=>"dd"],
-          ['email'=>"e@e.com",'Password'=>Hash::make(123),'Date_Birth'=>now(),'Phone'=>"1107651",'Gender'=>"2",'Blood_Group'=>"O+",'name'=>"Amira",'address'=>"dd"],
+          ['email'=>"a@a.com",'password'=>Hash::make(123),'Date_Birth'=>now(),'Phone'=>"1116771",'Gender'=>"1",'Blood_Group'=>"O+",'name'=>"Ali",'address'=>"dd"],
+          ['email'=>"e@e.com",'password'=>Hash::make(123),'Date_Birth'=>now(),'Phone'=>"1107651",'Gender'=>"2",'Blood_Group'=>"O+",'name'=>"Amira",'address'=>"dd"],
 
-          ['email'=>"c@c.com",'Password'=>Hash::make(123),'Date_Birth'=>now(),'Phone'=>"1154678811",'Gender'=>"1",'Blood_Group'=>"O+",'name'=>"Naser",'address'=>"dd"],
+          ['email'=>"c@c.com",'password'=>Hash::make(123),'Date_Birth'=>now(),'Phone'=>"1154678811",'Gender'=>"1",'Blood_Group'=>"O+",'name'=>"Naser",'address'=>"dd"],
 
 
         ]);

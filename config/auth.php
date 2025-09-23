@@ -45,6 +45,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+         'patient' => [
+            'driver' => 'session',
+            'provider' => 'patients',
+        ],
         'doctor' => [
             'driver' => 'session',
             'provider' => 'doctors',
@@ -99,7 +103,11 @@ return [
         'laboratorie_employees'=>[
             'driver' => 'eloquent',
             'model' =>App\Models\LaboratorieEmployee::class 
-        ]
+        ],
+        'patients'=>[
+             'driver' => 'eloquent',
+            'model' =>App\Models\Patient::class 
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

@@ -25,7 +25,7 @@ class PatientRequest extends FormRequest
             //
 
              'email'=>"required|email|unique:patients,email",
-            'Password'=>"nullable",
+            'password'=>"nullable",
             'Date_Birth'=>"required",
             'Phone'=>"required",
             'Gender'=>"required",

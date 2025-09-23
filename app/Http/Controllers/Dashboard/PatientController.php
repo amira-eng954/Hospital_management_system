@@ -44,7 +44,7 @@ class PatientController extends Controller
     public function store(PatientRequest $request)
     {
         $data=$request->validated();
-        $data['Password']=Hash::make($data['Password']);
+        $data['password']=Hash::make($data['password']);
         Patient::create($data);
         return redirect()->route('patients.index')->with('add',"add suc");
     }
@@ -61,9 +61,7 @@ class PatientController extends Controller
        $data=$request->validated();
          $Patient=Patient::find($id);
          print_r($Patient);
-        // if($data['Password']){
-        //   $data['Password']=Hash::make($data['Password']);
-        // }
+       
        $Patient->update($data);
 
        

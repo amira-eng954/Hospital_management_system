@@ -16,19 +16,19 @@ use App\Http\Controllers\Auth\RayEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+    // Route::get('register', [RegisteredUserController::class, 'create'])
+    //     ->name('register');
 
-         Route::get('login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+    //      Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    //     ->name('login');
 
 
-        /////////////////////////////////////////////user////////////////////////////////////////////////
-           Route::post('register', [RegisteredUserController::class, 'store'])->name('user.register');
-           Route::post('login/user', [AuthenticatedSessionController::class, 'store'])->name('login.user');
-           Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout.user');
+        /////////////////////////////////////////////patient////////////////////////////////////////////////
+           Route::post('register', [RegisteredUserController::class, 'store'])->name('patient.register');
+           Route::post('login/user', [AuthenticatedSessionController::class, 'store'])->name('login.patient');
+           Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware(['auth:patient'])->name('logout.patient');
  
-        //////////////////////////////////////////////////////////////////end user////////////////////////
+        //////////////////////////////////////////////////////////////////end patient////////////////////////
    
     //////////////////////////////admin//////////////////////////////////////////////////////////////////
      Route::post('admin/register',[AdminController::class, 'register'])->name('admin.register');

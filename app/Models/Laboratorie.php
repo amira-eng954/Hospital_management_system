@@ -27,5 +27,11 @@ class Laboratorie extends Model
        return $this->morphMany(Image::class,'imageable');
      }
 
+
+      public function employee()
+     {
+       return $this->belongsTo(LaboratorieEmployee::class);
+     }
+
      
 }
