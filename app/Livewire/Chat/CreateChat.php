@@ -64,15 +64,20 @@ class CreateChat extends Component
     {
         if(Auth::guard('doctor')->check())
         {
-          $this->users = Doctor::all();
+          $this->users = Patient::all();
 
         }
-        else {
-           $this->users=Patient::all();
+        elseif(Auth::guard('patient')->check()) {
+           $this->users=Doctor::all();
+           //dd('aaaa');
         }
+        
 
 
        
         return view('livewire.chat.createchat')->extends('dashboard.layouts.master');
     }
+  
 }
+
+

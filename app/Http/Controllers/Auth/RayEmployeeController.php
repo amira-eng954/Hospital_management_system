@@ -5,6 +5,8 @@ use App\Http\Requests\Auth\LoginRayEmployeeRequest;
 use App\Http\Controllers\Controller;
 use App\Models\RayEmployee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\RedirectResponse;
 class RayEmployeeController extends Controller
 {
