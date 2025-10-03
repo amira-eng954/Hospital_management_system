@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Livewire;
-
+use App\Events\InvoiceEvent;
 use App\Models\Doctor;
 use App\Models\FundAccount;
 use App\Models\Patient;
 use App\Models\PatientAccount;
 use App\Models\Service;
 use App\Models\single_invoice;
+use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -135,6 +136,21 @@ class SingleInvoices extends Component
                     $fund_accounts->save();
                     $this->InvoiceSaved =true;
                     $this->show_table =true;
+
+                    $patient=Patient::find($this->patient_id);
+                    Notification::create([
+                        'user_id'=> $this->doctor_id,
+                        
+                        'message'=>"كشف جديد". $patient->name,
+                        
+                    ]);
+                   
+                     $data=[
+                        'patient'=>$this->patient_id,
+                        'invoice_id'=>$single_invoices->id,
+                        'doctor_id'=>$this->doctor_id,
+                    ];
+                    event(new InvoiceEvent($data));
                 }
                 DB::commit();
             }

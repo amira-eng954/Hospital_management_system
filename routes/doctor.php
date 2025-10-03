@@ -7,6 +7,8 @@ use App\Http\Controllers\Dashboard_doctor\RayController;
 use App\Http\Controllers\Dashboard_doctor\PatientDetailsController;
 use App\Http\Controllers\Dashboard_doctor\DiagnosticController;
 use App\Http\Controllers\Dashboard_doctor\LaboratorieController;
+use  App\Livewire\Chat\CreateChat;
+use App\Livewire\Chat\Main;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -65,6 +67,17 @@ Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->n
  
   Route::get('showLaboratorie/{id}', [LaboratorieController::class,'view_laboratories'])->name('showLaboratorie');
  /////////////////////////////////////////////////////////////////end Laboratories//////
+
+ 
+
+   //############################# Chat route ##########################################
+         Route::get('list/patients',CreateChat::class)->name('list.patient');
+         Route::get('chat/patients',Main::class)->name('chat.patient');
+
+    //############################# end Chat route ######################################
+
+
+
 
  ///////////////////////////404/////////////////////////////////////////////////////////
   Route::get('/404', function(){

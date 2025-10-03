@@ -1,6 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Dashboard_patient\PatientController;
+use  App\Livewire\Chat\CreateChat;
+use App\Livewire\Chat\Main;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,5 +33,14 @@ Route::get('/dashboard/patient', function () {
      //#############################  rays.patient route ######################################
 
        Route::get('payments', [PatientController::class,'payments'])->name('payments.patient');
+
+      
+         //############################# Chat route ##########################################
+         Route::get('list/doctors',CreateChat::class)->name('list.doctors');
+         Route::get('chat/doctors',Main::class)->name('chat.doctors');
+
+        //############################# end Chat route ######################################
+
+        
    });
 ?>

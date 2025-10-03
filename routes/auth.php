@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
     // Route::get('register', [RegisteredUserController::class, 'create'])
     //     ->name('register');
 
-    //      Route::get('login', [AuthenticatedSessionController::class, 'create'])
-    //     ->name('login');
+          Route::get('login', [AuthenticatedSessionController::class, 'create'])
+         ->name('login');
 
 
         /////////////////////////////////////////////patient////////////////////////////////////////////////
@@ -33,14 +33,14 @@ use Illuminate\Support\Facades\Route;
     //////////////////////////////admin//////////////////////////////////////////////////////////////////
      Route::post('admin/register',[AdminController::class, 'register'])->name('admin.register');
      Route::post('login/admin',[AdminController::class, 'store'])->name('login.admin');
-      Route::post('admin/logout', [AdminController::class, 'destroy'])->middleware('auth:admin')->name('admin.logout');
+      Route::post('admin/logout', [AdminController::class, 'destroy'])->middleware('auth:admin')->name('logout.admin');
 
      ////////////////////////////////////////////////////end admin/////////////////////////////////////////
 
      ////////////////////////////////////doctors////////////////////////////////////////////////////
       Route::post('doctor/register',[DoctorController::class, 'register'])->name('doctor.register');
       Route::post('login/doctor',[DoctorController::class, 'store'])->name('login.doctor');
-      Route::post('doctor/logout', [DoctorController::class, 'destroy'])->middleware('auth:doctor')->name('doctor.logout');
+      Route::post('doctor/logout', [DoctorController::class, 'destroy'])->middleware('auth:doctor')->name('logout.doctor');
 
      ///////////////////////////////////end doctor///////////////////////////////////////////////////
 
