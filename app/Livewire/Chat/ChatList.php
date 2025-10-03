@@ -45,6 +45,9 @@ class ChatList extends Component
 
         }
 
+          $this->dispatch('updateMessage', $this->selected_conversation, $this->receviverUser)
+     ->to(\App\Livewire\Chat\SendMessage::class);
+
 
 
      }
@@ -67,7 +70,13 @@ class ChatList extends Component
         }
        // dd($this->conversation);
 
+      
+
      }
+     
+
+      
+
        
     public function render()
     {
