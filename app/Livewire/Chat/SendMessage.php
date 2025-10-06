@@ -20,14 +20,14 @@ class SendMessage extends Component
     {
         $this->auth_email = auth()->user()->email;
     }
-
+// دى بعملها كدا عشان لما اخزن الرسايل عايز المعلومات دى ف بجيبها لما اضعط على الليست
 #[On('updateMessage')]
     public function updateMessage(Conversation $conversation, $receiver){
         $this->selected_conversation = $conversation;
         $this->receviverUser = $receiver;
     }
 
-
+// دى بيخزن الرساله فى جدول الرسايل 
     public function sendMessage()
     {
 
@@ -45,6 +45,10 @@ class SendMessage extends Component
         $this->selected_conversation->last_time_message = $createdMessage->created_at;
         $this->selected_conversation->save();
         $this->reset('body');
+        $this->dispatch('pushMessage',$createdMessage->id)->to(\App\Livewire\Chat\Chatbox::class);
+         $this->dispatch('refresh')->to(\App\Livewire\Chat\ChatList::class);
+
+
     }
 
 
