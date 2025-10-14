@@ -122,8 +122,9 @@
             <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
             <li><a href="#"><span class="fab fa-google"></span></a></li>
             <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-            <li><a href="#"><span class="fab fa-skype"></span></a></li>
+           
             <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+             <li><a title="تسجيل دخول" href="{{route('dashboard.user')}}"><span class="fas fa-user"></span></a>
         </ul>
 
         <!-- Search Btn -->

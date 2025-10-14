@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     @include('WebSite.layouts.style')
+    @livewireStyles
 </head>
 
 <body>
 
-<div class="page-wrapper rlt">
+<div class="page-wrapper ">
     <!-- Preloader -->
     <div class="preloader"></div>
 

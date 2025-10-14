@@ -19,11 +19,11 @@ class DoctorSeeder extends Seeder
 
        $doctors= \App\Models\Doctor::factory()->count(30)->create();
 
-        $appoint=Appointment::all()->random()->id;
-        foreach($doctors as $doctor)
-        {
-            $doctor->appointment_doctor()->attach($appoint);
-        }
+        // $appoint=Appointment::all()->random()->id;
+        // foreach($doctors as $doctor)
+        // {
+        //     $doctor->appointment_doctor()->attach($appoint);
+        // }
          
 
 
