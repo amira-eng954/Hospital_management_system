@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\InsuranceController;
+use App\Http\Controllers\Dashboard\appointments\AppointmentController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\ProfileController;
@@ -105,6 +106,12 @@ Route::get('/dashboard/admin', function () {
         Route::resource('laboratorie_employee', LaboratorieEmployeeController::class);
 
         //############################# end laboratorie_employee route ######################################
+
+       
+        Route::get('appointments/index',[AppointmentController::class,'index'])->name('appointments.index');
+        
+        Route::get('appointments/index2',[AppointmentController::class,'index2'])->name('appointments.index2');
+        Route::put('appointments/approval/{id}',[AppointmentController::class,'approval'])->name('appointments.approval');
 
         
 

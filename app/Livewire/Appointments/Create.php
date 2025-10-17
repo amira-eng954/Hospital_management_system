@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Appointments;
+namespace App\Livewire\Appointments;
 
 use App\Models\Appointment;
 use App\Models\Doctor;
@@ -22,7 +22,7 @@ class Create extends Component
     public function mount(){
 
       $this->sections = Section::get();
-      $this->doctors = collect();
+      $this->doctors =[];
 
     }
 
@@ -30,7 +30,9 @@ class Create extends Component
     {
         return view('livewire.appointments.create',
             [
-                'sections' => Section::get()
+                'sections' => Section::get(),
+              
+
             ]);
     }
 
@@ -42,7 +44,7 @@ class Create extends Component
     public function store(){
 
         $appointments = new Appointment();
-        $appointments->doctor_id = $this->doctor;
+        $appointments->doctor_id = 1;
         $appointments->section_id = $this->section;
         $appointments->name = $this->name;
         $appointments->email = $this->email;

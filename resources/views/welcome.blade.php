@@ -1,4 +1,4 @@
-@extends('Website.layouts.master')
+@extends('WebSite.layouts.master')
 
 @section('content')
     <!-- Main Slider Three -->
