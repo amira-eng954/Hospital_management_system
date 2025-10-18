@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('status')->default(1);
+             $table->integer('number_of_statements');
             $table->rememberToken();
             $table->timestamps();
         });

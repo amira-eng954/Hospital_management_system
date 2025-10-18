@@ -34,7 +34,8 @@ class DoctorFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'phone' => $this->faker->phoneNumber,
             // 'price' => $this->faker->randomElement([100,200,300,400,500]),
-            'section_id'=>Section::all()->random()->id
+            'section_id'=>Section::all()->random()->id,
+            'number_of_statements'=>2,
         ];
     }
 }

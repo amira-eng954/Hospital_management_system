@@ -41,7 +41,7 @@ class AppointmentController extends Controller
 
        
         // send message mob
-        $receiverNumber = '+201283386303';//$appointment->phone;
+        $receiverNumber = $appointment->phone;
         $message = "عزيزي المريض" . " " . $appointment->name . " " . "تم حجز موعدك بتاريخ " . $appointment->appointment;
 
         $account_sid = getenv("TWILIO_SID");
@@ -55,6 +55,12 @@ class AppointmentController extends Controller
         session()->flash('add');
        return redirect()->back();
 
+    }
+    public function destroy($id)
+    {
+      $d=Appointment::findorfail($id);
+      $d->delete();
+      return redirect()->back();
     }
 
 

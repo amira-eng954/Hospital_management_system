@@ -1,7 +1,14 @@
 <div>
-    @if($message === true)
+   @if($message === true)
         <script>
             alert('تم ارسال تفاصيل الحجز الي المستشفي وسيتم ارسال معلومات الموعد عبر الهاتف والبريد الالكتروني')
+            location.reload()
+        </script>
+    @endif
+
+    @if($message2 === true)
+        <script>
+            alert('لا توجد مواعيد لهذا اليوم برجاء اختيار يوم اخر')
             location.reload()
         </script>
     @endif
@@ -36,6 +43,12 @@
                     @endforeach
 
                 </select>
+            </div>
+
+              <div class="col-lg-12 col-md-6 col-sm-12 form-group">
+                <label for="exampleFormControlSelect1">تاريخ الموعد</label>
+                <input type="date" name="appointment_patient" wire:model="appointment_patient" required
+                       class="form-control">
             </div>
 
             <div class="col-lg-12 col-md-6 col-sm-12 form-group">

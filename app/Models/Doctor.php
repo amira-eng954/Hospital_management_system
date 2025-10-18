@@ -26,6 +26,7 @@ class Doctor extends Authenticatable
        
         'section_id',
         'status',
+        'number_of_statements'
        
     ];
 

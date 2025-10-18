@@ -188,6 +188,7 @@ catch (\Exception $e) {
         'email'=>"required|email|unique:doctors,email,".$do->id,
          'phone'=>"required",
         'section_id'=>"required|exists:sections,id",
+        'number_of_statements'=>"required"
        ]);
         DB::beginTransaction();
       try {

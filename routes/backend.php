@@ -112,6 +112,7 @@ Route::get('/dashboard/admin', function () {
         
         Route::get('appointments/index2',[AppointmentController::class,'index2'])->name('appointments.index2');
         Route::put('appointments/approval/{id}',[AppointmentController::class,'approval'])->name('appointments.approval');
+        Route::delete('appointments/destroy/{id}',[AppointmentController::class,'destroy'])->name('appointments.destroy');
 
         
 
